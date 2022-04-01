@@ -1,0 +1,50 @@
+.image_check{
+    height: 150px;
+    width: 150px;
+}
+
+.name_{
+    margin-left:120px;
+    margin-right: 120px;
+    
+}
+
+.total_{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    float:right;
+    font-size: larger;
+    font-weight: bold;
+    background-color:lightgreen;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.homepage{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.homepage a{
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: bold;
+    color:crimson;
+}
+
+.decrement_{
+    margin-left: 80px;
+    margin-right:10px;
+    border: none;  
+}
+
+.increment_{
+    margin-left:10px;
+    margin-right:80px;
+    border: none;
+}
+
+.remove_{
+    margin-left:40px;
+    margin-right:40px;
+}

@@ -1,0 +1,18 @@
+.button {
+  border: none;
+  background-color: transparent;
+}
+
+.Food{
+  font-weight: bold;
+}
+
+.rating{
+  background-color:rgb(38, 36, 36);
+  color: white;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:8px;
+  padding-right:8px;
+  border-radius: 25px;
+}

@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.main {
+  text-align: left;
+}
+
+.aside-1 {
+  background: gold;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.aside-2 {
+  background-color: lightpink;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.sort {
+  margin: 10px;
+}
+
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 0 0;
+  }
+}
+
+
+
+@media all and (min-width: 800px) {
+  .main {
+    flex: 3 0px;
+  }
+  .aside-1 {
+    order: 1;
+  }
+  .main {
+    order: 2;
+  }
+  .aside-2 {
+    order: 3;
+  }
+  
+}
+
+body {
+  padding: 2em;
+}
+
+
+.main {
+  display: flex; 
+  flex-wrap: wrap;
+}
+
+.row {
+  margin: 10px;
+  flex: 50%;
+}
