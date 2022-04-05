@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "react-use-cart";
 import Checkout from "./Checkout";
 
-function Button(props) {
-  const { isEmpty } = useCart();
-  const [renderCheckout, setRenderCheckout] = React.useState(false);
+function Button() {
+  const [renderCheckout, setRenderCheckout] = useState(false);
 
   return (
     <div className="checkout">
-      {!isEmpty && (
-        <Link to={"/Checkout"}>
-          <button
-            className="success"
-            onClick={() => {
-              setRenderCheckout(true);
-            }}
-          >
-            Checkout
-          </button>
-        </Link>
-      )}
+      <Link to={"/Checkout"}>
+        <button
+          className="success"
+          onClick={() => {
+            setRenderCheckout(true);
+          }}
+        >
+          Checkout
+        </button>
+      </Link>
 
-      {renderCheckout && <Checkout ajay={props.item} />}
+      {renderCheckout && <Checkout />}
     </div>
   );
 }

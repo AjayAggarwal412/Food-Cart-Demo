@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FoodCard.css";
 import { Card } from "react-bootstrap";
-import { useCart } from "react-use-cart";
+// import { useCart } from "react-use-cart";
 import { FaRegHeart } from "react-icons/fa";
 
 const myStyle = {
@@ -16,24 +16,25 @@ const myStyle1 = {
   margin: 20,
 };
 
-function FoodCard(props) {
-  const { addItem, items } = useCart();
+function FoodCard({ item, handleClick }) {
+  const { id, image, price, name, rating, qty, color } = item;
+
   const [iconColor, setIconColor] = useState("black");
 
   return (
     <>
       <div className="row">
         <div className="">
-          <Card style={{ backgroundColor: `${props.color}`, margin: "10px" }}>
+          <Card style={{ backgroundColor: `${color}`, margin: "10px" }}>
             <Card.Title style={myStyle1}>
               <div>
-                <span className="rating"> {props.rating}⭐</span>
+                <span className="rating"> {rating}⭐</span>
 
                 <span style={{ float: "right" }}>
                   <button
                     className="button"
                     onClick={() => {
-                      addItem(props.item);
+                      handleClick(item);
                     }}
                   >
                     <FaRegHeart
@@ -47,7 +48,7 @@ function FoodCard(props) {
 
             <Card.Img
               variant="top"
-              src={props.image}
+              src={image}
               style={myStyle}
               className="image"
             />
@@ -55,7 +56,7 @@ function FoodCard(props) {
             <Card.Body>
               <Card.Text>
                 <div className="Food">
-                  {props.name}
+                  {name}
                   <span
                     style={{
                       float: "right",
@@ -64,10 +65,10 @@ function FoodCard(props) {
                       padding: "8px",
                     }}
                   >
-                    {props.qty}
+                    {qty}
                   </span>
                 </div>
-                <div className="Food">Rs.{props.price}</div>
+                <div className="Food">Rs.{price}</div>
               </Card.Text>
             </Card.Body>
           </Card>

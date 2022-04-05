@@ -9,6 +9,7 @@ const data = {
       rating: "4.0",
       qty: "1 Plate",
       color: "Aquamarine",
+      value: 1,
     },
     {
       id: "2",
@@ -19,6 +20,7 @@ const data = {
       rating: "4.3",
       qty: "300gm",
       color: "AntiqueWhite",
+      value: 1,
     },
     {
       id: "3",
@@ -29,6 +31,7 @@ const data = {
       rating: "4.6",
       qty: "400gm",
       color: "AliceBlue",
+      value: 1,
     },
 
     {
@@ -40,6 +43,7 @@ const data = {
       rating: "4.2",
       qty: "500gm",
       color: "DeepSkyBlue",
+      value: 1,
     },
     {
       id: "6",
@@ -50,6 +54,7 @@ const data = {
       rating: "3.5",
       qty: "400gm",
       color: "BurlyWood",
+      value: 1,
     },
   ],
 };

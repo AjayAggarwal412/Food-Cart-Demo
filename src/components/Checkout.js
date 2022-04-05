@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "react-use-cart";
 import "./Checkout.css";
 import { ListGroup } from "react-bootstrap";
 
-function Checkout() {
-  const { items, cartTotal, removeItem, isEmpty, updateItemQuantity } =
-    useCart();
-
+function Checkout({ cart, handleChange, price, handleRemove }) {
   return (
     <div>
       <div className="homepage">
         <Link to="/">Go to homepage</Link>
       </div>
 
-      {items.map((item, index) => {
+      {cart.map((item, index) => {
         return (
-          <ListGroup horizontal>
+          <ListGroup horizontal key={index}>
             <ListGroup.Item>
               <img src={item.image} className="image_check" />
             </ListGroup.Item>
@@ -24,25 +20,21 @@ function Checkout() {
               <strong className="name_">{item.name}</strong>
             </ListGroup.Item>
             <ListGroup.Item>
-              <strong className="name_">Rs.{item.itemTotal}</strong>
+              <strong className="name_">Rs.{item.price}</strong>
             </ListGroup.Item>
             <ListGroup.Item>
               <button
                 className="decrement_"
-                onClick={() => {
-                  updateItemQuantity(item.id, item.quantity - 1);
-                }}
+                onClick={() => handleChange(item, -1)}
               >
                 -
               </button>
 
-              <strong className="">{item.quantity}</strong>
+              <strong className="">{item.value}</strong>
 
               <button
                 className="increment_"
-                onClick={() => {
-                  updateItemQuantity(item.id, item.quantity + 1);
-                }}
+                onClick={() => handleChange(item, 1)}
               >
                 +
               </button>
@@ -51,9 +43,7 @@ function Checkout() {
               <div className="remove_">
                 <button
                   className="btn btn-danger"
-                  onClick={() => {
-                    removeItem(item.id);
-                  }}
+                  onClick={() => handleRemove(item.id)}
                 >
                   Remove
                 </button>
@@ -63,12 +53,10 @@ function Checkout() {
         );
       })}
 
-      {!isEmpty && (
-        <div className="total_">
-          Total price:
-          <span> Rs.{cartTotal}</span>
-        </div>
-      )}
+      <div className="total_">
+        Total price:
+        <span> Rs.{price}</span>
+      </div>
     </div>
   );
 }
