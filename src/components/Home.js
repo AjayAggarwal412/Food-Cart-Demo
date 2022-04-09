@@ -5,15 +5,14 @@ import Order from "./Order";
 import data from "../data";
 import Button from "./Button";
 
-function Home({ handleClick, cart, handleChange, handleRemove, price }) {
+function Home(props) {
+  const { cart, onAdd, onRemove, itemsPrice, items, onDecrement } = props;
   return (
     <>
       <div class="wrapper">
         <article class="main">
-          {data.items.map((item, index) => {
-            return (
-              <FoodCard key={index} item={item} handleClick={handleClick} />
-            );
+          {items.map((item, index) => {
+            return <FoodCard key={index} item={item} onAdd={onAdd} />;
           })}
         </article>
 
@@ -33,9 +32,10 @@ function Home({ handleClick, cart, handleChange, handleRemove, price }) {
         <aside class="aside aside-2">
           <Order
             cart={cart}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-            price={price}
+            itemsPrice={itemsPrice}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            onDecrement={onDecrement}
           />
           <Button />
         </aside>

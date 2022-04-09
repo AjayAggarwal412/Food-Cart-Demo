@@ -1,5 +1,5 @@
 import Home from "./components/Home";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Route,
@@ -8,61 +8,66 @@ import {
   Redirect,
 } from "react-router-dom";
 import Checkout from "./components/Checkout";
+import data from "./data";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [price, setPrice] = useState(0);
-  const [button, setButton] = useState(false);
+  const { items } = data;
 
-  const handleClick = (item) => {
-    setCart([...cart, item]);
-    console.log(cart);
+  const itemsPrice = cart.reduce((a, c) => a + c.qty * c.price, 0);
+
+  const onAdd = (item) => {
+    const exist = cart.find((x) => x.id === item.id);
+    if (exist) {
+      setCart(
+        cart.map((x) =>
+          x.id === item.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCart([...cart, { ...item, qty: 1 }]);
+    }
   };
 
-  const handleChange = (item, d) => {
-    const ind = cart.indexOf(item);
-    const arr = cart;
-    arr[ind].value += d;
-
-    if (arr[ind].value === 0) arr[ind].value = 1;
-    setCart([...arr]);
+  const onDecrement = (item) => {
+    const exist = cart.find((x) => x.id === item.id);
+    if (exist.qty === 1) {
+      setCart(cart.filter((x) => x.id !== item.id));
+    } else {
+      setCart(
+        cart.map((x) =>
+          x.id === item.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
   };
 
-  const handleRemove = (id) => {
+  const onRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
-    handlePrice();
   };
-
-  const handlePrice = () => {
-    let ans = 0;
-    cart.map((item) => (ans += item.value * item.price));
-    setPrice(ans);
-  };
-
-  useEffect(() => {
-    handlePrice();
-  });
 
   return (
     <Router>
       <Switch>
         <Route path="/" exact>
           <Home
-            handleClick={handleClick}
             cart={cart}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-            price={price}
+            items={items}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            onDecrement={onDecrement}
+            itemsPrice={itemsPrice}
           />
         </Route>
 
         <Route path="/Checkout">
           <Checkout
             cart={cart}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-            price={price}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            onDecrement={onDecrement}
+            itemsPrice={itemsPrice}
           />
         </Route>
 

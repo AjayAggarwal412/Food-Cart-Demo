@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Order.css";
 
-function Order({ cart, handleChange, price, handleRemove }) {
+function Order(props) {
+  const { cart, itemsPrice, onAdd, onRemove, onDecrement } = props;
   const time = new Date().toLocaleString();
 
   return (
@@ -10,9 +11,6 @@ function Order({ cart, handleChange, price, handleRemove }) {
       <p>{time}</p>
       <hr />
 
-      {/* 
-      <h5>Total Items: {() => totalItemHandler()}</h5> */}
-
       {cart.map((item, index) => {
         return (
           <>
@@ -20,25 +18,19 @@ function Order({ cart, handleChange, price, handleRemove }) {
               <img src={item.image} className="image" />
               <strong className="name">{item.name}</strong>
 
-              <button
-                className="decrement "
-                onClick={() => handleChange(item, -1)}
-              >
+              <button className="decrement " onClick={() => onDecrement(item)}>
                 -
               </button>
 
-              {item.value}
+              {item.qty}
 
-              <button
-                className="increment "
-                onClick={() => handleChange(item, 1)}
-              >
+              <button className="increment " onClick={() => onAdd(item)}>
                 +
               </button>
               <div className="remove">
                 <button
                   className="btn btn-danger"
-                  onClick={() => handleRemove(item.id)}
+                  onClick={() => onRemove(item.id)}
                 >
                   Remove
                 </button>
@@ -50,7 +42,7 @@ function Order({ cart, handleChange, price, handleRemove }) {
 
       <div className="total">
         Total price
-        <span style={{ float: "right" }}>Rs.{price}</span>
+        <span style={{ float: "right" }}>Rs.{itemsPrice}</span>
       </div>
     </div>
   );

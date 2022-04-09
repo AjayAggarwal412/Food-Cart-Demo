@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Checkout.css";
 import { ListGroup } from "react-bootstrap";
 
-function Checkout({ cart, handleChange, price, handleRemove }) {
+function Checkout(props) {
+  const { cart, onAdd, onRemove, itemsPrice, onDecrement } = props;
+
   return (
     <div>
       <div className="homepage">
@@ -23,19 +25,13 @@ function Checkout({ cart, handleChange, price, handleRemove }) {
               <strong className="name_">Rs.{item.price}</strong>
             </ListGroup.Item>
             <ListGroup.Item>
-              <button
-                className="decrement_"
-                onClick={() => handleChange(item, -1)}
-              >
+              <button className="decrement_" onClick={() => onDecrement(item)}>
                 -
               </button>
 
-              <strong className="">{item.value}</strong>
+              <strong className="">{item.qty}</strong>
 
-              <button
-                className="increment_"
-                onClick={() => handleChange(item, 1)}
-              >
+              <button className="increment_" onClick={() => onAdd(item)}>
                 +
               </button>
             </ListGroup.Item>
@@ -43,7 +39,7 @@ function Checkout({ cart, handleChange, price, handleRemove }) {
               <div className="remove_">
                 <button
                   className="btn btn-danger"
-                  onClick={() => handleRemove(item.id)}
+                  onClick={() => onRemove(item.id)}
                 >
                   Remove
                 </button>
@@ -55,7 +51,7 @@ function Checkout({ cart, handleChange, price, handleRemove }) {
 
       <div className="total_">
         Total price:
-        <span> Rs.{price}</span>
+        <span> Rs.{itemsPrice}</span>
       </div>
     </div>
   );
