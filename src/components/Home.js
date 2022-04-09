@@ -37,7 +37,11 @@ function Home(props) {
             onRemove={onRemove}
             onDecrement={onDecrement}
           />
-          <Button />
+          {cart.length == 0 ? (
+            <div className="_empty">Cart is Empty!</div>
+          ) : (
+            <Button />
+          )}
         </aside>
       </div>
     </>

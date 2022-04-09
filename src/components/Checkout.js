@@ -49,10 +49,14 @@ function Checkout(props) {
         );
       })}
 
-      <div className="total_">
-        Total price:
-        <span> Rs.{itemsPrice}</span>
-      </div>
+      {cart.length == 0 ? (
+        <div className="_empty">Oops, Nothing on Checkout Page!</div>
+      ) : (
+        <div className="total_">
+          Total price:
+          <span> Rs.{itemsPrice}</span>
+        </div>
+      )}
     </div>
   );
 }

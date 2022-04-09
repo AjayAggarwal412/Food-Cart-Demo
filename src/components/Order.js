@@ -40,10 +40,14 @@ function Order(props) {
         );
       })}
 
-      <div className="total">
-        Total price
-        <span style={{ float: "right" }}>Rs.{itemsPrice}</span>
-      </div>
+      {cart.length == 0 ? (
+        ""
+      ) : (
+        <div className="total">
+          Total price
+          <span style={{ float: "right" }}>Rs.{itemsPrice}</span>
+        </div>
+      )}
     </div>
   );
 }
