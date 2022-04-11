@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Food-Cart-Demo/static/css/main.e4fa5ec2.css",
+    "main.js": "/Food-Cart-Demo/static/js/main.74ca9b3d.js",
+    "index.html": "/Food-Cart-Demo/index.html",
+    "main.e4fa5ec2.css.map": "/Food-Cart-Demo/static/css/main.e4fa5ec2.css.map",
+    "main.74ca9b3d.js.map": "/Food-Cart-Demo/static/js/main.74ca9b3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4fa5ec2.css",
+    "static/js/main.74ca9b3d.js"
+  ]
+}
