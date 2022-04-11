@@ -3,7 +3,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Route,
-  HashRouter,
+  Switch,
   BrowserRouter as Router,
   Redirect,
 } from "react-router-dom";
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <Router>
-      <HashRouter>
+      <Switch>
         <Route path="/" exact>
           <Home
             cart={cart}
@@ -74,7 +74,7 @@ function App() {
         <Route path="*">
           <Redirect to="/" />
         </Route>
-      </HashRouter>
+      </Switch>
     </Router>
   );
 }
