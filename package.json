@@ -2,7 +2,7 @@
   "name": "foodorder",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AjayAggarwal412.github.io/demo-cart",
+  "homepage": "https://AjayAggarwal412.github.io/Food-Cart-Demo",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
